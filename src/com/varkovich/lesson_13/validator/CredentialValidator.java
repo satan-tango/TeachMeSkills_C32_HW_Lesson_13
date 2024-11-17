@@ -49,10 +49,6 @@ public class CredentialValidator {
 
     public static boolean isCredentialValidSecondOption(String login, String password, String confirmPassword)
             throws WrongLoginException, WrongPasswordException {
-        char[] loginCharArray = login.toCharArray();
-        char[] passwordCharArray = password.toCharArray();
-        char[] confirmPasswordCharArray = confirmPassword.toCharArray();
-
         if (login == null || login.equals("")) {
             throw new WrongLoginException("Fill login field");
         }
@@ -65,16 +61,16 @@ public class CredentialValidator {
             throw new WrongPasswordException("Fill confirm password field");
         }
 
+        char[] loginCharArray = login.toCharArray();
+        char[] passwordCharArray = password.toCharArray();
+        char[] confirmPasswordCharArray = confirmPassword.toCharArray();
+
         if (login.length() > 20) {
             throw new WrongLoginException("Invalid login, it must be less then 20 characters");
         }
 
         if (isCharArrayContains(loginCharArray, ' ')) {
             throw new WrongLoginException("Invalid login, it must not contain 'space'");
-        }
-
-        if (password == null || password.equals("")) {
-            throw new WrongPasswordException("Fill password field");
         }
 
         if (password.length() > 20) {
